@@ -4,6 +4,7 @@ import com.judo.model.Athlete;
 import com.judo.model.TrainingPlan;
 
 import java.util.ArrayList;
+import java.util.InputMismatchException;
 import java.util.Scanner;
 
 public class Main {
@@ -14,10 +15,16 @@ public class Main {
 
         Scanner input = new Scanner(System.in);
 
-        int menuChoice;
+        int menuChoice = 0;
         do {
+
             displayMenu();
-            menuChoice = input.nextInt();
+            try {
+                menuChoice = input.nextInt();
+
+            } catch (InputMismatchException e) {
+
+            }
             input.nextLine();
 
             switch (menuChoice) {
@@ -33,7 +40,7 @@ public class Main {
                     System.out.print("Enter athlete's name to search: ");
                     String name = input.nextLine();
                     int index = searchAthlete(name);
-                    if ( index >= 0) {
+                    if (index >= 0) {
                         displayDetail(athletes.get(index));
                     } else {
                         System.out.println("There is no athlete with the name: " + name);
@@ -62,7 +69,7 @@ public class Main {
     public static void displayMenu() {
         System.out.println("\n--- Judo Training Cost Calculator ---");
         System.out.println("1. Add New Athlete");
-        System.out.println("2. Calculate Cost for One Athlete");
+        System.out.println("2. Search Athlete");
         System.out.println("3. Calculate Cost for All Athletes");
         System.out.println("4. Exit Program");
         System.out.print("Enter your choice: ");
@@ -101,7 +108,11 @@ public class Main {
         }
 
         System.out.print("Enter number of private coaching hours per week (max 5): ");
-        athlete.setNoOfPrivateHours(input.nextInt());
+        int privateHours = input.nextInt();
+        if (privateHours > 5) {
+            System.out.println("The max hours of the private coaching is 5. So, the private coaching hours will be set as 5.");
+        }
+        athlete.setNoOfPrivateHours(privateHours);
 
         athletes.add(athlete);
 

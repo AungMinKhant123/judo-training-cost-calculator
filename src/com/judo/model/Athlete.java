@@ -73,7 +73,11 @@ public class Athlete {
     }
 
     public void setNoOfCompetitions(int noOfCompetitions) {
-        this.noOfCompetitions = noOfCompetitions;
+        if (this.trainingPlan == TrainingPlan.BEGINNER) {
+            this.noOfCompetitions = 0;
+        } else {
+            this.noOfCompetitions = noOfCompetitions;
+        }
     }
 
     public int getNoOfPrivateHours() {

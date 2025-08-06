@@ -7,8 +7,8 @@ import java.util.ArrayList;
 
 public class AthleteCostCalculator implements Calculator{
 
-    private final double PRIVATE_TUITION_FEE_PER_HOUR = 9.50;
-    private final double ENTRY_FEE_PER_COMPETITION =22.00;
+    private final double PRIVATE_TUITION_FEE_PER_HOUR = 9.00;
+    private final double ENTRY_FEE_PER_COMPETITION = 22.00;
     private final int WEEKS_IN_MONTH = 4;
 
     @Override
